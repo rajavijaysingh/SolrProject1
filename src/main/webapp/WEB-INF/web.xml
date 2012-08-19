@@ -4,4 +4,41 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
+
+    <filter>
+        <filter-name>SolrRequestFilter</filter-name>
+        <filter-class>org.apache.solr.servlet.SolrDispatchFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+
+        <filter-name>SolrRequestFilter</filter-name>
+        <url-pattern>/dataimport</url-pattern>
+    </filter-mapping>
+    <servlet>
+        <servlet-name>SolrServer</servlet-name>
+        <servlet-class>org.apache.solr.servlet.SolrServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>SolrUpdate</servlet-name>
+        <servlet-class>org.apache.solr.servlet.SolrUpdateServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>Logging</servlet-name>
+        <servlet-class>org.apache.solr.servlet.LogLevelSelection</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SolrUpdate</servlet-name>
+        <url-pattern>/update/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Logging</servlet-name>
+        <url-pattern>/admin/logging</url-pattern>
+    </servlet-mapping>
+
+
+
 </web-app>

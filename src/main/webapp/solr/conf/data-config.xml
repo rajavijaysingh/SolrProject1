@@ -1,0 +1,8 @@
+<dataConfig>
+<dataSource type="JdbcDataSource" name="ds-1" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/solrdb" user="root" password="password"/>
+ <document>
+  <entity name="product" pk="id"
+   query="select * FROM products WHERE '${dataimporter.request.clean}' != 'false' OR last_modified > '${dataimporter.last_index_time}'">
+  </entity>
+    </document>
+</dataConfig>
