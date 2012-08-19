@@ -1,4 +1,4 @@
-<@page import="java.sql.*,com.rao.solr.db.DBConnection" %>
+<%@ page import="java.sql.*,com.rao.solr.db.DBConnection" %>
 <html>
 <head>
 </head>
@@ -42,6 +42,17 @@ catch(Exception e)
 {
  out.println(e);
 
+}
+finally
+{
+        try
+            {
+            con.close();
+            }
+            catch(Exception e)
+            {
+
+            }
 }
 
 

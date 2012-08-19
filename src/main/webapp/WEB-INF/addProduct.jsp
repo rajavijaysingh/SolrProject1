@@ -4,7 +4,7 @@
 </head>
 <body>
 
-<h1 align="center"><font color="#0000CC"> Products List </font> </h1>
+<h1 align="center"><font color="#0000CC"> Add Products </font> </h1>
 
 <%
 
@@ -44,15 +44,14 @@ catch(Exception e)
 }
 finally
 {
+            try
+             {
+             con.close();
+             }
+             catch(Exception e)
+             {
 
-        try
-            {
-            con.close();
-            }
-            catch(Exception e)
-            {
-
-            }
+             }
 }
 
 
