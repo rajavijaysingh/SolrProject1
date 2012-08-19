@@ -1,9 +1,10 @@
+<@page import="java.sql.*,com.rao.solr.db.DBConnection" %>
 <html>
 <head>
 </head>
 <body>
 
-<h1 align="center"> Categories List </h1>
+<h1 align="center"><font color="#0000CC"> Categories List </font> </h1>
 
 <%
 
@@ -11,19 +12,28 @@ out.println("Hello World");
 
 try
 {
-Connection con = DBConnection.getConnection();
+java.sql.Connection con = com.rao.solr.db.DBConnection.getConnection();
 
 if(con!=null)
 out.println("got the connection");
+else
+out.println("No DB Connection:");
+%>
 
-Statement stat = con.createStatement("select * from categories");
+<table align="center" width="50%">
+<th> <td align="center" width='50%'> Category ID</td> <td align="center" width='50%'> Name </td> </th>
 
-ResultSet rs = stat.executeQuery();
+
+<%
+
+java.sql.Statement stat = con.createStatement();
+
+java.sql.ResultSet rs = stat.executeQuery("select * from categories");
 
 while(rs.next())
 {
 
-out.println(rs.get(0)+"  "+rs.get(1));
+out.println("<tr>   <td align='center'> "+rs.getString(1)+" </td>  <td align='center'>  "+rs.getString(2)+"</td></tr>");
 
 }
 
@@ -36,6 +46,7 @@ catch(Exception e)
 
 
 %>
+</table>
 
 
 </body>
