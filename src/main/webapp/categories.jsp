@@ -20,8 +20,8 @@ else
 out.println("No DB Connection:");
 %>
 
-<table align="center" width="50%">
-<th> <td align="center" width='50%'> Category ID</td> <td align="center" width='50%'> Name </td> </th>
+<table align="center" border='1' width="200">
+<tr style="color:#0000CC;text-align:center;font-size:14"> <td align="center" width='50%'> Category ID</td> <td align="center" width='50%'> Name </td> </tr>
 
 
 <%
