@@ -34,11 +34,24 @@
         <servlet-name>SolrUpdate</servlet-name>
         <url-pattern>/update/*</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>SolrServer</servlet-name>
+        <url-pattern>/solr</url-pattern>
+    </servlet-mapping>
+
+
     <servlet-mapping>
         <servlet-name>Logging</servlet-name>
         <url-pattern>/admin/logging</url-pattern>
     </servlet-mapping>
 
 
+
+    <env-entry>
+        <env-entry-name>solr/home</env-entry-name>
+        <env-entry-value>./solr/</env-entry-value>
+        <env-entry-type>java.lang.String</env-entry-type>
+    </env-entry>
 
 </web-app>

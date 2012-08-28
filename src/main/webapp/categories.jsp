@@ -8,33 +8,68 @@
 
 <%
 
-out.println("Hello World");
 
 try
 {
 java.sql.Connection con = com.rao.solr.db.DBConnection.getConnection();
 
-if(con!=null)
-out.println("got the connection");
-else
-out.println("No DB Connection:");
 %>
 
-<table align="center" border='1' width="200">
-<tr style="color:#0000CC;text-align:center;font-size:14"> <td align="center" width='50%'> Category ID</td> <td align="center" width='50%'> Name </td> </tr>
+<table align="center" width="574" border="0" cellspacing="0" cellpadding="2" bordercolor="black" style="border-width:1px">
+
+<tr style="background-color:#507CD1; color:White">
+
+
+ <TH style="font-size:12px; text-align:center">	<font face="Verdana"> Select </font> </TH>
+
+ <TH style="font-size:12px; text-align:center"> <font face="Verdana"> Category ID </font></TH>
+
+ <TH style="font-size:12px; text-align:center"> <font face="Verdana"> Category Name </font> </TH>
+
+ </tr>
 
 
 <%
-
+if(con!=null)
+{
 java.sql.Statement stat = con.createStatement();
 
 java.sql.ResultSet rs = stat.executeQuery("select * from categories");
 
+int j=0;
 while(rs.next())
 {
 
-out.println("<tr>   <td align='center'> "+rs.getString(1)+" </td>  <td align='center'>  "+rs.getString(2)+"</td></tr>");
 
+        if(j%2==0)
+			{
+				  out.println("<tr style='background-color:#EFF3FB; font-size:12px; font-name:Verdana'>");
+			}
+             else
+			 {
+				  out.println("<tr style='background-color:white; font-size:12px; font-name:Verdana'>");
+			 }
+			j++;
+%>
+
+
+
+<td align="left" valign="top" style="text-align:center"> <input type="checkbox" name="<% out.println(rs.getString(1)); %>" value="ON"> </td>
+
+<td align="left" valign="top" style="text-align:center"> <% out.println(rs.getString(1)); %> </td>
+<td align="left" valign="top" style="text-align:center"> <% out.println(rs.getString(2)); %> </td>
+
+<%
+out.println("</tr>");
+
+}
+
+con.close();
+
+}
+else
+{
+out.println("<center><h2>DB Connection Problem..</h2> </center>");
 }
 
 }
@@ -43,17 +78,8 @@ catch(Exception e)
  out.println(e);
 
 }
-finally
-{
-        try
-            {
-            con.close();
-            }
-            catch(Exception e)
-            {
 
-            }
-}
+
 
 
 %>

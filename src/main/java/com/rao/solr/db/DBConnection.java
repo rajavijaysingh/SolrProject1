@@ -21,7 +21,7 @@ public class DBConnection {
 
         Class.forName("com.mysql.jdbc.Driver");
 
-        con = DriverManager.getConnection("jdbc:mysql://localhost/solrdb","root","rhino");
+        con = DriverManager.getConnection("jdbc:mysql://localhost/solrdb","root","password");
 
         System.out.println("Connected to database");
 
